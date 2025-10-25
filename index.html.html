@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartyPal - Find Party Supplies & Plan Your Celebration</title>
+    <meta name="description" content="PartyPal helps you find party supplies from local stores, plan your budget with interactive charts, and discover the best deals for your celebration.">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="googleb063e6269b3fb147" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* All the CSS styles from the previous code */
+        :root {
+            --primary: #1db954;
+            --secondary: #191414;
+            --accent: #ff6b6b;
+            --vibrant-1: #ff9ff3;
+            --vibrant-2: #feca57;
+            --vibrant-3: #48dbfb;
+            --vibrant-4: #ff9f43;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --gray: #535353;
+            --card-bg: #282828;
+            --hover-bg: #3e3e3e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2d2d2d 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ... (include all the CSS styles from the previous code) ... */
+        
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-container">
+                <div class="logo-icon">PP</div>
+                <div class="logo-text">PartyPal</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li class="active" data-page="home">
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+            </li>
+            <li data-page="parties">
+                <a href="#">
+                    <i class="fas fa-birthday-cake"></i>
+                    <span class="nav-text">Parties</span>
+                </a>
+            </li>
+            <li data-page="budget">
+                <a href="#">
+                    <i class="fas fa-chart-pie"></i>
+                    <span class="nav-text">Budget & Charts</span>
+                </a>
+            </li>
+            <li data-page="ads">
+                <a href="#">
+                    <i class="fas fa-ad"></i>
+                    <span class="nav-text">Store Offers</span>
+                </a>
+            </li>
+            <li data-page="company">
+                <a href="#">
+                    <i class="fas fa-building"></i>
+                    <span class="nav-text">Company Ads</span>
+                </a>
+            </li>
+        </ul>
+        <button class="toggle-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="page-title">Home</h1>
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <span>Welcome to PartyPal</span>
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div id="home" class="page">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-birthday-cake" style="color: var(--vibrant-1); font-size: 24px;"></i>
+                        <div class="stat-value" style="color: var(--vibrant-1);">5</div>
+                        <div class="stat-label">Popular Party Themes</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign" style="color: var(--vibrant-2); font-size: 24px;"></i>
+                        <div class="stat-value" style="color: var(--vibrant-2);">12</div>
+                        <div class="stat-label">Stores Nearby</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-store" style="color: var(--vibrant-3); font-size: 24px;"></i>
+                        <div class="stat-value" style="color: var(--vibrant-3);">24</div>
+                        <div class="stat-label">Active Offers</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users" style="color: var(--vibrant-4); font-size: 24px;"></i>
+                        <div class="stat-value" style="color: var(--vibrant-4);">100+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Space for Monetization -->
+            <div class="ad-space">
+                <h3>Advertisement</h3>
+                <p>This space is available for promotional content</p>
+                <button class="btn" style="background: var(--secondary); color: white;">Advertise With Us</button>
+            </div>
+
+            <div class="playlist-section">
+                <div class="playlist-header">
+                    <h2 class="playlist-title">Trending Party Themes</h2>
+                    <a href="#" class="view-all">Show all</a>
+                </div>
+                <div class="card-grid">
+                    <div class="party-card">
+                        <div class="party-img gradient-bg-1"></div>
+                        <div class="party-content">
+                            <h3 class="party-title">Tropical Luau</h3>
+                            <p class="party-desc">Bring the beach to your backyard with this tropical theme.</p>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-img gradient-bg-2"></div>
+                        <div class="party-content">
+                            <h3 class="party-title">Masquerade Ball</h3>
+                            <p class="party-desc">Elegant and mysterious party with masks and formal attire.</p>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-img gradient-bg-3"></div>
+                        <div class="party-content">
+                            <h3 class="party-title">80s Retro</h3>
+                            <p class="party-desc">Neon colors, retro music, and big hair for this throwback party.</p>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-img gradient-bg-4"></div>
+                        <div class="party-content">
+                            <h3 class="party-title">Superhero Party</h3>
+                            <p class="party-desc">Dress up as your favorite superhero for an action-packed celebration.</p>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content Section -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-search"></i> Find the Best Party Supplies Near You</h2>
+                <div class="seo-content">
+                    <h2>Your Ultimate Party Planning Destination</h2>
+                    <p>PartyPal helps you find the perfect party supplies from local stores in your area. Whether you're planning a birthday party, wedding, corporate event, or any celebration, we connect you with the best stores offering quality party supplies at affordable prices.</p>
+                    
+                    <h2>Smart Budget Planning Tools</h2>
+                    <p>Our interactive budget planning tools help you allocate your party budget efficiently. Use our charts and graphs to visualize spending across different categories like decorations, food, entertainment, and venue. Set your budget in multiple currencies and track your expenses in real-time.</p>
+                    
+                    <h2>Exclusive Store Offers & Deals</h2>
+                    <p>Discover exclusive offers from party supply stores in your neighborhood. From discounts on bulk purchases to special seasonal promotions, our platform brings you the best deals to make your celebration memorable without breaking the bank.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parties Page -->
+        <div id="parties" class="page hidden">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-birthday-cake"></i> Plan Your Party</h2>
+                
+                <div class="form-group">
+                    <label for="party-type">Party Type</label>
+                    <select id="party-type" class="form-control">
+                        <option value="birthday">Birthday Party</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="baby-shower">Baby Shower</option>
+                        <option value="graduation">Graduation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <input type="number" id="guests" class="form-control" value="25" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="date">Party Date</label>
+                    <input type="date" id="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget</label>
+                    <div class="budget-input">
+                        <input type="number" id="budget" class="form-control" value="500" min="1">
+                        <select id="currency" class="form-control">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="JPY">JPY</option>
+                            <option value="CAD">CAD</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn" id="createPartyBtn">Create Party</button>
+            </div>
+
+            <!-- Shopping List Section -->
+            <div class="card hidden" id="shoppingListCard">
+                <h2 class="card-title"><i class="fas fa-shopping-cart"></i> Your Shopping List</h2>
+                <div class="shopping-list" id="shoppingList">
+                    <!-- Shopping list items will be generated here -->
+                </div>
+            </div>
+
+            <!-- Ad Space -->
+            <div class="ad-space">
+                <h3>Sponsored Content</h3>
+                <p>Reach potential customers planning their events</p>
+                <button class="btn" style="background: var(--secondary); color: white;">Advertise Here</button>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-shopping-cart"></i> Recommended Supplies</h2>
+                <div class="card-grid">
+                    <div class="ad-card">
+                        <div class="ad-img gradient-bg-1">
+                            <div class="ad-badge">20% OFF</div>
+                        </div>
+                        <div class="ad-content">
+                            <div class="ad-store"><i class="fas fa-store"></i> Party Central</div>
+                            <h3 class="ad-title">Premium Balloon Package</h3>
+                            <div class="ad-price">$49.99</div>
+                            <p class="ad-desc">Includes 50 assorted balloons, helium tank, and ribbons.</p>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="ad-card">
+                        <div class="ad-img gradient-bg-2">
+                            <div class="ad-badge">FREE DELIVERY</div>
+                        </div>
+                        <div class="ad-content">
+                            <div class="ad-store"><i class="fas fa-store"></i> Decor Galore</div>
+                            <h3 class="ad-title">Tableware Set for 25</h3>
+                            <div class="ad-price">$34.99</div>
+                            <p class="ad-desc">Plates, cups, napkins and cutlery for 25 guests.</p>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget & Charts Page -->
+        <div id="budget" class="page hidden">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-chart-pie"></i> Budget Allocation</h2>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-chart-bar"></i> Cost Per Guest</h2>
+                <div class="chart-container">
+                    <canvas id="guestChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Ad Space -->
+            <div class="ad-space">
+                <h3>Premium Ad Space</h3>
+                <p>Target users actively planning their party budgets</p>
+                <button class="btn" style="background: var(--secondary); color: white;">Reserve This Ad Space</button>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-exchange-alt"></i> Currency Converter</h2>
+                <div class="budget-input">
+                    <input type="number" id="convert-from" class="form-control" value="500">
+                    <select id="currency-from" class="form-control">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="CAD">CAD</option>
+                    </select>
+                    <i class="fas fa-exchange-alt" style="align-self: center;"></i>
+                    <input type="number" id="convert-to" class="form-control" value="425" readonly>
+                    <select id="currency-to" class="form-control">
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="JPY">JPY</option>
+                        <option value="CAD">CAD</option>
+                    </select>
+                </div>
+                <button class="btn" style="margin-top: 15px;">Convert Currency</button>
+            </div>
+        </div>
+
+        <!-- Store Offers Page -->
+        <div id="ads" class="page hidden">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-ad"></i> Store Advertisements & Offers</h2>
+                
+                <!-- Premium Ad Banner -->
+                <div class="ad-space" style="background: linear-gradient(135deg, var(--vibrant-3), var(--vibrant-1));">
+                    <h3>Premium Featured Store</h3>
+                    <p>Get maximum visibility for your store with our featured placement</p>
+                    <button class="btn" style="background: var(--secondary); color: white;">Feature Your Store</button>
+                </div>
+                
+                <div class="ad-grid">
+                    <div class="ad-card">
+                        <div class="ad-img gradient-bg-1">
+                            <div class="ad-badge">LIMITED TIME</div>
+                        </div>
+                        <div class="ad-content">
+                            <div class="ad-store"><i class="fas fa-store"></i> Party World</div>
+                            <h3 class="ad-title">Complete Birthday Package</h3>
+                            <div class="ad-price">$199.99 <span style="text-decoration: line-through; color: #b3b3b3; font-size: 14px;">$249.99</span></div>
+                            <p class="ad-desc">Everything you need for a birthday party for 20 guests.</p>
+                            <button class="btn">View Deal</button>
+                        </div>
+                    </div>
+                    <div class="ad-card">
+                        <div class="ad-img gradient-bg-2">
+                            <div class="ad-badge">NEW</div>
+                        </div>
+                        <div class="ad-content">
+                            <div class="ad-store"><i class="fas fa-store"></i> Celebration Station</div>
+                            <h3 class="ad-title">Wedding Decor Collection</h3>
+                            <div class="ad-price">$399.99</div>
+                            <p class="ad-desc">Elegant wedding decorations for up to 100 guests.</p>
+                            <button class="btn">View Deal</button>
+                        </div>
+                    </div>
+                    <div class="ad-card">
+                        <div class="ad-img gradient-bg-3">
+                            <div class="ad-badge">FREE SHIPPING</div>
+                        </div>
+                        <div class="ad-content">
+                            <div class="ad-store"><i class="fas fa-store"></i> The Party Store</div>
+                            <h3 class="ad-title">Summer Luau Package</h3>
+                            <div class="ad-price">$149.99</div>
+                            <p class="ad-desc">Tropical decorations for your summer luau party.</p>
+                            <button class="btn">View Deal</button>
+                        </div>
+                    </div>
+                    <div class="ad-card">
+                        <div class="ad-img gradient-bg-4">
+                            <div class="ad-badge">BULK DISCOUNT</div>
+                        </div>
+                        <div class="ad-content">
+                            <div class="ad-store"><i class="fas fa-store"></i> Balloons & More</div>
+                            <h3 class="ad-title">Custom Printed Balloons</h3>
+                            <div class="ad-price">$0.99 each</div>
+                            <p class="ad-desc">Personalize your party with custom printed balloons.</p>
+                            <button class="btn">View Deal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Advertising Page -->
+        <div id="company" class="page hidden">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-building"></i> Company Advertising Dashboard</h2>
+                <p>Welcome to the advertising dashboard. Here you can create and manage advertisements for your party supplies.</p>
+                
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <h3><i class="fas fa-credit-card"></i> Advertising Payment</h3>
+                    <p>To publish advertisements, please select your payment method and complete the payment.</p>
+                    
+                    <div class="payment-options">
+                        <div class="payment-option" data-type="international">
+                            <div class="payment-icon"><i class="fas fa-globe"></i></div>
+                            <div class="payment-title">International</div>
+                            <div class="payment-price">$20/month</div>
+                            <div class="payment-desc">Pay with credit card or PayPal</div>
+                        </div>
+                        <div class="payment-option" data-type="kenya">
+                            <div class="payment-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="payment-title">Kenya (M-Pesa)</div>
+                            <div class="payment-price">KSH 1,000/month</div>
+                            <div class="payment-desc">Pay via M-Pesa</div>
+                        </div>
+                    </div>
+                    
+                    <div id="internationalPayment" class="hidden">
+                        <h4>International Payment</h4>
+                        <p>Please proceed with payment of $20/month using your preferred payment method.</p>
+                        <button class="btn" id="payInternationalBtn">Pay $20 Now</button>
+                    </div>
+                    
+                    <div id="mpesaPayment" class="hidden">
+                        <h4>M-Pesa Payment Instructions</h4>
+                        <div class="mpesa-instructions">
+                            <p>To complete your payment via M-Pesa:</p>
+                            <ol>
+                                <li>Go to M-Pesa on your phone</li>
+                                <li>Select "Lipa Na M-Pesa"</li>
+                                <li>Select "Pay Bill"</li>
+                                <li>Enter Business Number: <strong>245110</strong></li>
+                                <li>Enter Account Number: <strong>937331</strong></li>
+                                <li>Enter Amount: <strong>KSH 1,000</strong></li>
+                                <li>Enter your M-Pesa PIN and confirm</li>
+                            </ol>
+                            <p>After payment, your advertisement will be activated within 24 hours.</p>
+                        </div>
+                        <div class="phone-number">245110937331</div>
+                        
+                        <!-- Global Pay Option for International Users -->
+                        <div class="global-pay-option">
+                            <h4><i class="fas fa-globe-americas"></i> Not in Kenya? Use Global Pay</h4>
+                            <p>If you're not in Kenya, you can still use M-Pesa Global Pay to make your payment:</p>
+                            <ol>
+                                <li>Visit the M-Pesa Global Pay website</li>
+                                <li>Select "Send to M-Pesa"</li>
+                                <li>Enter the phone number: <strong>+254 245110937331</strong></li>
+                                <li>Enter amount: <strong>KSH 1,000</strong> (approx $8-10 depending on exchange rate)</li>
+                                <li>Complete payment with your international card</li>
+                            </ol>
+                            <p>Your payment will be converted to Kenyan Shillings automatically.</p>
+                        </div>
+                        
+                        <button class="btn" id="confirmMpesaBtn">I Have Sent Payment</button>
+                    </div>
+                    
+                    <div id="paymentStatus" class="payment-status hidden"></div>
+                </div>
+                
+                <div class="company-option">
+                    <h3><i class="fas fa-plus-circle"></i> Create New Advertisement</h3>
+                    <div class="form-group">
+                        <label for="ad-title">Advertisement Title</label>
+                        <input type="text" id="ad-title" class="form-control" placeholder="Enter a catchy title for your ad">
+                    </div>
+                    <div class="form-group">
+                        <label for="ad-description">Description</label>
+                        <textarea id="ad-description" class="form-control" rows="3" placeholder="Describe your party supplies and offers"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Media (Photos & 30-second Videos)</label>
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p class="upload-text">Drag & drop files here or click to browse</p>
+                            <p class="upload-text">Supports JPG, PNG, and MP4 files (max 30 seconds for videos)</p>
+                            <input type="file" id="fileInput" multiple accept="image/*,video/*" style="display: none;">
+                            <button class="upload-btn" id="browseBtn">Browse Files</button>
+                        </div>
+                        <div class="media-preview" id="mediaPreview">
+                            <!-- Media previews will appear here -->
+                        </div>
+                    </div>
+                    <button class="btn" id="publishAdBtn">Publish Advertisement</button>
+                </div>
+                
+                <div class="company-ads" id="companyAds">
+                    <h3><i class="fas fa-list"></i> Your Published Advertisements</h3>
+                    <!-- Company ads will appear here -->
+                    <p id="noAdsMessage">You haven't published any advertisements yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // User state management
+        let paymentCompleted = false;
+        let userParties = [];
+        let companyAds = [];
+        let uploadedMedia = [];
+        let selectedPaymentType = '';
+        
+        // Shopping list templates for different party types
+        const shoppingLists = {
+            birthday: [
+                { name: "Balloons", quantity: "50 pcs" },
+                { name: "Party Hats", quantity: "25 pcs" },
+                { name: "Birthday Cake", quantity: "1 large" },
+                { name: "Paper Plates", quantity: "50 pcs" },
+                { name: "Plastic Cups", quantity: "50 pcs" },
+                { name: "Streamers", quantity: "5 rolls" },
+                { name: "Candles", quantity: "1 pack" }
+            ],
+            wedding: [
+                { name: "Wedding Cake", quantity: "1 large" },
+                { name: "Flower Arrangements", quantity: "10 bouquets" },
+                { name: "Table Centerpieces", quantity: "15 pcs" },
+                { name: "Champagne Glasses", quantity: "100 pcs" },
+                { name: "Wedding Favors", quantity: "100 pcs" },
+                { name: "Aisle Runner", quantity: "1 roll" },
+                { name: "Guest Book", quantity: "1 book" }
+            ],
+            corporate: [
+                { name: "Name Tags", quantity: "50 pcs" },
+                { name: "Pens & Notepads", quantity: "50 sets" },
+                { name: "Coffee & Tea", quantity: "5 lbs" },
+                { name: "Pastries", quantity: "50 pcs" },
+                { name: "Projector Screen", quantity: "1 unit" },
+                { name: "Microphone", quantity: "2 units" },
+                { name: "Company Banners", quantity: "3 pcs" }
+            ],
+            "baby-shower": [
+                { name: "Baby Diapers", quantity: "50 pcs" },
+                { name: "Baby Wipes", quantity: "5 packs" },
+                { name: "Baby Onesies", quantity: "10 pcs" },
+                { name: "Baby Bottles", quantity: "10 pcs" },
+                { name: "Pacifiers", quantity: "10 pcs" },
+                { name: "Baby Shower Cake", quantity: "1 medium" },
+                { name: "Baby-themed Decorations", quantity: "1 set" }
+            ],
+            graduation: [
+                { name: "Graduation Caps", quantity: "25 pcs" },
+                { name: "Diploma Scrolls", quantity: "25 pcs" },
+                { name: "Graduation Cake", quantity: "1 large" },
+                { name: "Balloons (School Colors)", quantity: "50 pcs" },
+                { name: "Party Streamers", quantity: "5 rolls" },
+                { name: "Graduation Cards", quantity: "25 pcs" },
+                { name: "Photo Booth Props", quantity: "1 set" }
+            ]
+        };
+
+        // DOM Elements
+        const createPartyBtn = document.getElementById('createPartyBtn');
+        const shoppingListCard = document.getElementById('shoppingListCard');
+        const shoppingList = document.getElementById('shoppingList');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const mediaPreview = document.getElementById('mediaPreview');
+        const publishAdBtn = document.getElementById('publishAdBtn');
+        const companyAdsContainer = document.getElementById('companyAds');
+        const noAdsMessage = document.getElementById('noAdsMessage');
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const internationalPayment = document.getElementById('internationalPayment');
+        const mpesaPayment = document.getElementById('mpesaPayment');
+        const payInternationalBtn = document.getElementById('payInternationalBtn');
+        const confirmMpesaBtn = document.getElementById('confirmMpesaBtn');
+        const paymentStatus = document.getElementById('paymentStatus');
+
+        // Event Listeners
+        createPartyBtn.addEventListener('click', createParty);
+
+        browseBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', handleFileUpload);
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary)';
+            uploadArea.style.background = 'rgba(29, 185, 84, 0.1)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = 'var(--gray)';
+            uploadArea.style.background = 'transparent';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--gray)';
+            uploadArea.style.background = 'transparent';
+            
+            if (e.dataTransfer.files.length > 0) {
+                handleFiles(e.dataTransfer.files);
+            }
+        });
+
+        publishAdBtn.addEventListener('click', publishAdvertisement);
+
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                selectedPaymentType = option.getAttribute('data-type');
+                
+                // Show appropriate payment method
+                internationalPayment.classList.add('hidden');
+                mpesaPayment.classList.add('hidden');
+                paymentStatus.classList.add('hidden');
+                
+                if (selectedPaymentType === 'international') {
+                    internationalPayment.classList.remove('hidden');
+                } else if (selectedPaymentType === 'kenya') {
+                    mpesaPayment.classList.remove('hidden');
+                }
+            });
+        });
+
+        payInternationalBtn.addEventListener('click', processInternationalPayment);
+        confirmMpesaBtn.addEventListener('click', processMpesaPayment);
+
+        // Functions
+        function createParty() {
+            const partyType = document.getElementById('party-type').value;
+            const guests = parseInt(document.getElementById('guests').value);
+            const budget = parseFloat(document.getElementById('budget').value);
+            const currency = document.getElementById('currency').value;
+            
+            // Generate shopping list
+            shoppingList.innerHTML = '';
+            const listItems = shoppingLists[partyType] || [];
+            
+            listItems.forEach(item => {
+                const listItem = document.createElement('div');
+                listItem.className = 'shopping-list-item';
+                listItem.innerHTML = `
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-quantity">${item.quantity}</span>
+                `;
+                shoppingList.appendChild(listItem);
+            });
+            
+            // Show shopping list
+            shoppingListCard.classList.remove('hidden');
+            
+            // Update dashboard stats
+            userParties.push({ type: partyType, guests, budget, currency });
+            
+            alert(`Party created successfully! Check your shopping list for recommended supplies.`);
+        }
+
+        function handleFileUpload(e) {
+            handleFiles(e.target.files);
+        }
+
+        function handleFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                
+                // Check if file is image or video
+                if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
+                    alert('Please upload only image or video files');
+                    continue;
+                }
+                
+                // Check video duration (simulated)
+                if (file.type.startsWith('video/')) {
+                    // In a real app, you would check the actual duration
+                    // For this demo, we'll just add a note
+                    alert('Note: Videos should be 30 seconds or less. Please ensure your video meets this requirement.');
+                }
+                
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const mediaItem = document.createElement('div');
+                    mediaItem.className = 'media-item';
+                    
+                    if (file.type.startsWith('image/')) {
+                        mediaItem.innerHTML = `
+                            <img src="${e.target.result}" alt="Uploaded image">
+                            <button class="media-remove" onclick="removeMedia(this)"><i class="fas fa-times"></i></button>
+                        `;
+                    } else {
+                        mediaItem.innerHTML = `
+                            <video controls>
+                                <source src="${e.target.result}" type="${file.type}">
+                                Your browser does not support the video tag.
+                            </video>
+                            <button class="media-remove" onclick="removeMedia(this)"><i class="fas fa-times"></i></button>
+                        `;
+                    }
+                    
+                    mediaPreview.appendChild(mediaItem);
+                    uploadedMedia.push({
+                        file: file,
+                        url: e.target.result,
+                        type: file.type.startsWith('image/') ? 'image' : 'video'
+                    });
+                };
+                
+                reader.readAsDataURL(file);
+            }
+            
+            // Reset file input
+            fileInput.value = '';
+        }
+
+        function removeMedia(button) {
+            const mediaItem = button.parentElement;
+            const index = Array.from(mediaPreview.children).indexOf(mediaItem);
+            
+            if (index !== -1) {
+                uploadedMedia.splice(index, 1);
+                mediaPreview.removeChild(mediaItem);
+            }
+        }
+
+        function processInternationalPayment() {
+            paymentStatus.textContent = 'Processing international payment...';
+            paymentStatus.className = 'payment-status pending';
+            paymentStatus.classList.remove('hidden');
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                paymentCompleted = true;
+                paymentStatus.textContent = 'Payment successful! You can now publish advertisements.';
+                paymentStatus.className = 'payment-status success';
+                
+                alert('International payment processed successfully! You can now publish your advertisement.');
+            }, 2000);
+        }
+
+        function processMpesaPayment() {
+            paymentStatus.textContent = 'Waiting for M-Pesa payment confirmation...';
+            paymentStatus.className = 'payment-status pending';
+            paymentStatus.classList.remove('hidden');
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                paymentCompleted = true;
+                paymentStatus.textContent = 'M-Pesa payment confirmed! You can now publish advertisements.';
+                paymentStatus.className = 'payment-status success';
+                
+                alert('M-Pesa payment confirmed! You can now publish your advertisement.');
+            }, 3000);
+        }
+
+        function publishAdvertisement() {
+            const title = document.getElementById('ad-title').value;
+            const description = document.getElementById('ad-description').value;
+            
+            if (!title || !description) {
+                alert('Please provide both a title and description for your advertisement');
+                return;
+            }
+            
+            if (uploadedMedia.length === 0) {
+                alert('Please upload at least one photo or video for your advertisement');
+                return;
+            }
+            
+            // Create ad object
+            const ad = {
+                id: Date.now(),
+                title,
+                description,
+                media: [...uploadedMedia],
+                date: new Date().toLocaleDateString(),
+                paymentType: selectedPaymentType
+            };
+            
+            // Add to company ads
+            companyAds.push(ad);
+            
+            // Update UI
+            renderCompanyAds();
+            
+            // Reset form
+            document.getElementById('ad-title').value = '';
+            document.getElementById('ad-description').value = '';
+            mediaPreview.innerHTML = '';
+            uploadedMedia = [];
+            
+            alert('Advertisement published successfully!');
+        }
+
+        function renderCompanyAds() {
+            if (companyAds.length === 0) {
+                noAdsMessage.style.display = 'block';
+                return;
+            }
+            
+            noAdsMessage.style.display = 'none';
+            
+            // Clear existing ads (except the no ads message)
+            const existingAds = companyAdsContainer.querySelectorAll('.company-ad');
+            existingAds.forEach(ad => ad.remove());
+            
+            // Render ads
+            companyAds.forEach(ad => {
+                const adElement = document.createElement('div');
+                adElement.className = 'company-ad';
+                
+                let mediaHTML = '';
+                ad.media.forEach(media => {
+                    if (media.type === 'image') {
+                        mediaHTML += `
+                            <div class="ad-media-item">
+                                <img src="${media.url}" alt="Advertisement image">
+                            </div>
+                        `;
+                    } else {
+                        mediaHTML += `
+                            <div class="ad-media-item">
+                                <video controls>
+                                    <source src="${media.url}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        `;
+                    }
+                });
+                
+                adElement.innerHTML = `
+                    <div class="company-ad-header">
+                        <span class="company-name">${ad.title}</span>
+                        <span class="ad-date">${ad.date}</span>
+                    </div>
+                    <div class="ad-media">
+                        ${mediaHTML}
+                    </div>
+                    <p class="ad-description">${ad.description}</p>
+                    <div class="ad-payment-info">Paid via: ${ad.paymentType === 'international' ? 'International ($20)' : 'M-Pesa (KSH 1,000)'}</div>
+                    <button class="btn btn-secondary" onclick="deleteAd(${ad.id})">Delete</button>
+                `;
+                
+                companyAdsContainer.appendChild(adElement);
+            });
+        }
+
+        function deleteAd(adId) {
+            if (confirm('Are you sure you want to delete this advertisement?')) {
+                companyAds = companyAds.filter(ad => ad.id !== adId);
+                renderCompanyAds();
+            }
+        }
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-links li').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.nav-links li').forEach(li => {
+                    li.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.add('hidden');
+                });
+                
+                // Show selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.remove('hidden');
+                
+                // Update page title
+                document.querySelector('.page-title').textContent = this.querySelector('.nav-text').textContent;
+            });
+        });
+
+        // Sidebar toggle functionality
+        document.querySelector('.toggle-btn').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+            document.querySelector('.main-content').classList.toggle('expanded');
+            
+            // Change icon based on state
+            const icon = this.querySelector('i');
+            if (document.querySelector('.sidebar').classList.contains('collapsed')) {
+                icon.classList.remove('fa-chevron-left');
+                icon.classList.add('fa-chevron-right');
+            } else {
+                icon.classList.remove('fa-chevron-right');
+                icon.classList.add('fa-chevron-left');
+            }
+        });
+
+        // Initialize charts
+        window.onload = function() {
+            // Budget Allocation Chart
+            const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+            const budgetChart = new Chart(budgetCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Decorations', 'Food & Drinks', 'Entertainment', 'Venue', 'Miscellaneous'],
+                    datasets: [{
+                        data: [30, 40, 15, 10, 5],
+                        backgroundColor: [
+                            '#ff9ff3',
+                            '#feca57',
+                            '#48dbfb',
+                            '#ff9f43',
+                            '#1db954'
+                        ],
+                        borderWidth: 0,
+                        borderColor: '#191414'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+
+            // Cost Per Guest Chart
+            const guestCtx = document.getElementById('guestChart').getContext('2d');
+            const guestChart = new Chart(guestCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['10 Guests', '25 Guests', '50 Guests', '100 Guests'],
+                    datasets: [{
+                        label: 'Cost Per Guest (USD)',
+                        data: [45, 32, 28, 22],
+                        backgroundColor: '#1db954',
+                        borderColor: '#1db954',
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#3e3e3e'
+                            },
+                            ticks: {
+                                color: '#b3b3b3'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: '#3e3e3e'
+                            },
+                            ticks: {
+                                color: '#b3b3b3'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
